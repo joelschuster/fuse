@@ -21,13 +21,13 @@
     <parent>
         <groupId>org.fusesource</groupId>
         <artifactId>fuse-project</artifactId>
-        <version>6.2.0.redhat-SNAPSHOT</version>
+        <version>6.2.1.redhat-SNAPSHOT</version>
         <relativePath>../parent</relativePath>
     </parent>
 
     <groupId>org.jboss.quickstarts.fuse</groupId>
     <artifactId>quickstarts-parent</artifactId>
-    <version>6.2.0.redhat-SNAPSHOT</version>
+    <version>6.2.1.redhat-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>JBoss Fuse Quickstart: quickstarts</name>
     <url>http://www.jboss.org/products/fuse</url>
@@ -59,6 +59,18 @@
             </snapshots>
             <releases>
                 <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>fusesource.ea</id>
+            <name>JBoss Community Early Access Release Repository</name>
+            <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
             </releases>
         </repository>
     </repositories>

@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.jboss.fuse</groupId>
         <artifactId>esb-project</artifactId>
-        <version>6.2.0.redhat-SNAPSHOT</version>
+        <version>6.2.1.redhat-SNAPSHOT</version>
     </parent>
 
     <artifactId>esb-assembly</artifactId>
@@ -122,7 +122,7 @@
                          <listDependencies>true</listDependencies>
                          <!--  exclude newer saxon from notice gen due to maven shade plugin being unable to process META-INF/SAXONICA.RSA/SF -->
                          <excludeDependencies>org.apache.servicemix.bundles:org.apache.servicemix.bundles.saxon</excludeDependencies>
-                         <extraDependencies>org.apache.xerces:xercesImpl:${xerces.version},xalan:xalan:${xalan.version},xalan:serializer:${xalan.version},org.apache.servicemix.specs:org.apache.servicemix.specs.activator:${servicemix-specs-version},org.apache.servicemix.specs:org.apache.servicemix.specs.jaxp-api-1.4:${servicemix-specs-version},org.apache.servicemix.specs:org.apache.servicemix.specs.jaxws-api-2.2:${servicemix-specs-version},org.apache.servicemix.bundles:org.apache.servicemix.bundles.saxon:${saxon.bundle.version}</extraDependencies>
+                         <extraDependencies>xerces:xercesImpl:${xerces.version},xalan:xalan:${xalan.version},xalan:serializer:${xalan.version},org.apache.servicemix.specs:org.apache.servicemix.specs.activator:${servicemix-specs-version},org.apache.servicemix.specs:org.apache.servicemix.specs.jaxp-api-1.4:${servicemix-specs-version},org.apache.servicemix.specs:org.apache.servicemix.specs.jaxws-api-2.2:${servicemix-specs-version},org.apache.servicemix.bundles:org.apache.servicemix.bundles.saxon:${saxon.bundle.version}</extraDependencies>
                          <noticeSupplements>shared/notice-supplements.xml</noticeSupplements>
                          <repositories>${project.basedir}/target/features-repo,${project.basedir}/target/dependencies/unix/fabric8-karaf-${fabric.version}/system</repositories>
                          <defaultParent>org.jboss.fuse:esb-project:${project.version}:../..</defaultParent>
@@ -193,6 +193,24 @@
                                     <outputDirectory>target/shared</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>sy-quickstarts</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.switchyard.quickstarts</groupId>
+                                    <artifactId>switchyard-quickstart-distro</artifactId>
+                                    <type>zip</type>
+                                    <version>${switchyard.version}</version>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>target/shared/syquickstarts</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -347,7 +365,8 @@
     
     <modules>
         <module>jboss-fuse-full</module>
-        <module>jboss-fuse-karaf-full</module>
+     <!--   disabled temporarily as per https://issues.jboss.org/browse/ENTESB-3112
+            <module>jboss-fuse-karaf-full</module> -->
     </modules>
     
     <profiles>

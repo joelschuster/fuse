@@ -28,8 +28,8 @@ System requirements
 -------------------
 Before building and running this quick start you need:
 
-* Maven 3.0.4 or higher
-* JDK 1.6 or 1.7
+* Maven 3.1.1 or higher
+* JDK 1.7 or 1.8
 * JBoss Fuse 6
 
 
@@ -45,7 +45,7 @@ To build the quick start:
 * In the JBoss Fuse console, enter the following command:
 
         features:install cxf-ws-security
-        osgi:install -s mvn:org.jboss.quickstarts.fuse/secure-soap/${project.version}
+        osgi:install -s mvn:org.jboss.quickstarts.fuse/cxf-secure-soap/${project.version}
 
 * Fuse should give you an id when the bundle is deployed
 * You can check that everything is ok by issuing  the command:

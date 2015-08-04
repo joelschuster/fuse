@@ -20,6 +20,7 @@ import org.apache.camel.ComponentConfiguration;
 import org.apache.camel.EndpointConfiguration;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
+import org.junit.Ignore;
 
 public class SapTransactionalIDocListServerComponentConfigurationAndDocumentationTest extends CamelTestSupport {
 
@@ -28,6 +29,7 @@ public class SapTransactionalIDocListServerComponentConfigurationAndDocumentatio
         return false;
     }
 
+    @Ignore("ENTESB-3457")
     @Test
     public void testComponentConfiguration() throws Exception {
         SapTransactionalIDocListServerComponent comp = context.getComponent("sap-idoclist-server", SapTransactionalIDocListServerComponent.class);

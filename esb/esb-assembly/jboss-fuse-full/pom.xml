@@ -21,7 +21,7 @@
     <parent>
         <groupId>org.jboss.fuse</groupId>
         <artifactId>esb-assembly</artifactId>
-        <version>6.2.0.redhat-SNAPSHOT</version>
+        <version>6.2.1.redhat-SNAPSHOT</version>
     </parent>
 
     <artifactId>jboss-fuse-full</artifactId>
@@ -213,7 +213,7 @@
                             <!-- workaround for errors in CXF 3.0.1 features file, cfr. CXF-5972 -->
                             <failOnArtifactResolutionError>false</failOnArtifactResolutionError>
                             <blackList>
-                                pax-cdi-openwebbeans,pax-cdi-web-openwebbeans
+                                pax-cdi-openwebbeans,pax-cdi-web-openwebbeans,spring-struts
                             </blackList>
                         </configuration>
                     </execution>
@@ -283,10 +283,13 @@
                       
                                         <!-- Add the sap component and its example -->
                                         <descriptor>mvn:org.fusesource/camel-sap/${project.version}/xml/features</descriptor>
-                                        <descriptor>mvn:org.jboss.quickstarts.fuse/camel-sap/${project.version}/xml/features</descriptor>
+                                        <descriptor>mvn:org.switchyard.karaf/switchyard/${switchyard.version}/xml/core-features</descriptor>
                                     </descriptors>
                                     <includeMvnBasedDescriptors>true</includeMvnBasedDescriptors>
                                     <repository>target/features-repo</repository>
+                                    <blackList>
+                                        pax-cdi-openwebbeans,pax-cdi-web-openwebbeans,spring-struts
+                                    </blackList>
                                 </configuration>
                              </execution>
                         </executions>
@@ -294,7 +297,6 @@
                 </plugins>
             </build>
         </profile>
-<!--
         <profile>
             <id>release</id>
             <build>
@@ -336,7 +338,6 @@
                 </plugins>
             </build>
         </profile>
--->
     </profiles>
 </project>
 

@@ -43,8 +43,8 @@
                 <exclude>etc/org.apache.karaf.command.acl.osgi.cfg</exclude>
                 <exclude>etc/org.apache.karaf.command.acl.scope_bundle.cfg</exclude>
                 <exclude>etc/org.apache.karaf.command.acl.shell.cfg</exclude>
-                <exclude>fabric/import/fabric/profiles/default.profile/jmx.acl.whitelist.properties</exclude>
                 <exclude>etc/users.properties</exclude>
+                <exclude>etc/keys.properties</exclude>
                 <exclude>etc/org.ops4j.pax.web.cfg</exclude>
                 <exclude>etc/org.apache.karaf.features.cfg</exclude>
                 <exclude>etc/org.ops4j.pax.logging.cfg</exclude>
@@ -112,6 +112,11 @@
     </fileSets>
 
     <files>
+        <file>
+            <source>${basedir}/src/main/resources/license.txt</source>
+            <fileMode>0444</fileMode>
+        </file>
+
         <file>
             <source>${basedir}/target/dependencies/unix/fabric8-karaf-${fabric.version}/bin/standalone</source>
             <outputDirectory>/bin/</outputDirectory>

@@ -30,6 +30,7 @@
                 <exclude>etc/org.ops4j.pax.logging.cfg</exclude>
                 <exclude>etc/custom.properties</exclude>
                 <exclude>etc/users.properties</exclude>
+                <exclude>etc/keys.properties</exclude>
                 <exclude>etc/system.properties</exclude>
                 <exclude>etc/org.ops4j.pax.web.cfg</exclude>
                 <exclude>etc/jmx.acl.cfg</exclude>
@@ -157,6 +158,11 @@
     </fileSets>
 
     <files>
+        <file>
+            <source>${basedir}/src/main/filtered-resources/license.txt</source>
+            <fileMode>0444</fileMode>
+        </file>
+
         <file>
             <source>${basedir}/target/dependencies/unix/apache-karaf-${karaf-version}/bin/karaf</source>
             <outputDirectory>/bin/</outputDirectory>

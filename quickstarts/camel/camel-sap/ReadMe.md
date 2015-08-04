@@ -36,7 +36,7 @@ System requirements
 
 Before building and running this quick start you will need:
 
-* Maven 3.0.4 or higher
+* Maven 3.1.1 or higher
 * JDK 1.7 or 1.8
 * JBoss Fuse 6.2
 * SAP JCo3 and IDoc3 libraries (sapjco3.jar, sapidoc3.jar and JCo native library for your OS platform)
@@ -48,10 +48,10 @@ Configuring the Quickstart for your environment
 To configure the quick start for your environment: 
 
 1. Deploy the JCo3 library jar and native library (for your platform) and IDoc3 library jar to the `lib` folder of your JBoss Fuse installation.  
-2. Edit the custom properties file (`etc/custom.properties`) of your JBoss Fuse installation and add the following packages to the `org.osgi.framework.system.packages.extra` property:  
+2. Copy the `org.osgi.framework.system.packages.extra` property from the configuration properties file (`etc\config.properties`) to the custom properties file (`etc/custom.properties`) of your JBoss Fuse installation and append the following packages to the `org.osgi.framework.system.packages.extra` property:  
 
 > org.osgi.framework.system.packages.extra = \  
->...  
+>..., \  
 >> com.sap.conn.idoc, \  
 >> com.sap.conn.idoc.jco, \   
 >> com.sap.conn.jco, \   
@@ -62,8 +62,7 @@ To configure the quick start for your environment:
 
 3. Edit the project's Blueprint file (`src/main/resources/OSGI-INF/blueprint/sap.xml`) and modify the `quickstartDestinationData` bean and the `quickstartServerData` bean to match the connection configuration for your SAP instance. 
 4. Edit the project's request file (`src/data/request.xml`) and enter the SID of your SAP in the location indicated.
-5. Edit the project's request file (`src/data/response.xml`) and enter the SID of your SAP in the location indicated.
-6. Ensure the destination `QUICKSTART` has been defined in your SAP instance:   
+5. Ensure the destination `QUICKSTART` has been defined in your SAP instance:   
 	a. Using the SAP GUI, run transaction `SM59` (RFC Destinations).    
     b. Create a new destination (Edit > Create):  
 		1. **RFC Destination** : `QUICKSTART`.    
@@ -73,7 +72,7 @@ To configure the quick start for your environment:
             ii.**Program ID** : `QUICKSTART`.   
         4. **Unicode**:   
         	i. **Communication Type with Target System** : `Unicode`   
-7. Ensure the following `ZBAPI_FLCUST_GETLIST` ABAP program is installed and activated in your SAP client:  
+6. Ensure the following `ZBAPI_FLCUST_GETLIST` ABAP program is installed and activated in your SAP client:  
 
 			*&---------------------------------------------------------------------*
 			*& Report  ZBAPI_FLCUST_GETLIST

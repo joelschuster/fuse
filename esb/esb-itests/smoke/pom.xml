@@ -10,7 +10,7 @@
     <parent>
         <artifactId>esb-itests</artifactId>
         <groupId>org.jboss.fuse</groupId>
-        <version>6.2.0.redhat-SNAPSHOT</version>
+        <version>6.2.1.redhat-SNAPSHOT</version>
     </parent>
 
     <groupId>org.jboss.fuse.itests</groupId>
@@ -75,14 +75,14 @@
             <version>${project.version}</version>
             <type>zip</type>
         </dependency>
-
+<!--
         <dependency>
             <groupId>org.jboss.fuse</groupId>
             <artifactId>jboss-fuse-karaf-full</artifactId>
             <version>${project.version}</version>
             <type>zip</type>
         </dependency>
-
+-->
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>

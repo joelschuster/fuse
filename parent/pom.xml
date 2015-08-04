@@ -21,12 +21,12 @@
     <parent>
         <groupId>org.jboss.fuse.bom</groupId>
         <artifactId>jboss-fuse-parent</artifactId>
-        <version>6.2.0.redhat-SNAPSHOT</version>
+        <version>6.2.1.redhat-SNAPSHOT</version>
     </parent>
 
     <groupId>org.fusesource</groupId>
     <artifactId>fuse-project</artifactId>
-    <version>6.2.0.redhat-SNAPSHOT</version>
+    <version>6.2.1.redhat-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>JBoss Fuse :: Parent</name>
@@ -35,7 +35,7 @@
         <maven-assembly-plugin-version>2.4</maven-assembly-plugin-version>
         <maven-build-helper-plugin-version>1.8</maven-build-helper-plugin-version>
         <maven-bundle-plugin-version>2.3.4</maven-bundle-plugin-version>
-        <maven-notices-plugin-version>1.31</maven-notices-plugin-version>
+        <maven-notices-plugin-version>1.38</maven-notices-plugin-version>
         <maven-surefire-plugin-version>2.16</maven-surefire-plugin-version>
     </properties>
     

@@ -30,9 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sap.conn.idoc.IDocRepository;
-import com.sap.conn.idoc.jco.JCoIDoc;
 import com.sap.conn.idoc.jco.JCoIDocServer;
-import com.sap.conn.jco.JCoException;
 
 /**
  * An SAP endpoint receiving an IDoc (Intermediate Document) list from an SAP system
@@ -41,7 +39,7 @@ import com.sap.conn.jco.JCoException;
  * @author William Collins <punkhornsw@gmail.com>
  * 
  */
-@UriEndpoint(scheme = "sap-idoclist-server", consumerClass = SapTransactionalIDocListConsumer.class, syntax = "sap-idoclist-server:server:rfc", consumerOnly = true, title="SAP IDoc List Server")
+@UriEndpoint(scheme = "sap-idoclist-server", consumerClass = SapTransactionalIDocListConsumer.class, syntax = "sap-idoclist-server:server:idocType:idocTypeExtension:systemRelease:applicationRelease", consumerOnly = true, title="SAP IDoc List Server")
 public class SapTransactionalIDocListServerEndpoint extends DefaultEndpoint {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SapTransactionalIDocListServerEndpoint.class);
@@ -52,13 +50,13 @@ public class SapTransactionalIDocListServerEndpoint extends DefaultEndpoint {
 	@UriPath(name = "idocType", description = "Specifies the Basic IDoc Type of an IDoc consumed by this endpoint") @Metadata(required = "true")
 	protected String idocType;
 	
-	@UriPath(name = "idocTypeExtension", description = "Specifies the IDoc Type Extension, if any, of an IDoc consumed by this endpoint")
+	@UriPath(name = "idocTypeExtension", description = "Specifies the IDoc Type Extension, if any, of an IDoc consumed by this endpoint") @Metadata(required = "false")
 	protected String idocTypeExtension;
 
-	@UriPath(name = "systemRelease", description = "Specifies the associated SAP Basis Release, if any, of an IDoc consumed by this endpoint")
+	@UriPath(name = "systemRelease", description = "Specifies the associated SAP Basis Release, if any, of an IDoc consumed by this endpoint") @Metadata(required = "false")
 	protected String systemRelease;
 	
-	@UriPath(name = "applicationRelease", description = "Specifes the associated Application Release, if any, of an IDoc consumed by this endpoint")
+	@UriPath(name = "applicationRelease", description = "Specifes the associated Application Release, if any, of an IDoc consumed by this endpoint") @Metadata(required = "false")
 	protected String applicationRelease;
 	
 	@UriParam(name = "propagateExceptions", description = "When true, specifies that this endpoint will propagate exceptions back to the caller in SAP instead of the exchange's exception handler", defaultValue = "false")
@@ -66,8 +64,6 @@ public class SapTransactionalIDocListServerEndpoint extends DefaultEndpoint {
 	
 	@UriParam(name = "stateful", description = "When true, specifies that this endpoint will initiate an SAP stateful session", defaultValue = "false")
 	protected boolean stateful;
-
-	protected JCoIDocServer server;
 
 	public SapTransactionalIDocListServerEndpoint() {
 	}
@@ -174,14 +170,12 @@ public class SapTransactionalIDocListServerEndpoint extends DefaultEndpoint {
 	}
 
 	protected JCoIDocServer getServer() {
-		if (server == null) {
-			try {
-				server = JCoIDoc.getServer(serverName);
-			} catch (JCoException e) {
-				LOG.warn("Failed to get server object for endpoint '" + getEndpointUri() + "'. This exception will be ignored.", e);
-			}
+		try {
+			return getComponent().getServer(serverName);
+		} catch (Exception e) {
+			LOG.warn("Failed to get server object for endpoint '"+ getEndpointUri() + "'. This exception will be ignored.", e);
 		}
-		return server;
+		return null;
 	}
 
 }
